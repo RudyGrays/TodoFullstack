@@ -7,7 +7,7 @@
     "prisma:push": "prisma db push",
     "prisma:studio": "prisma studio",
     "build": "tsc",
-    "start": "node ./dist/server.js"
+    "start": "node dist/server.js"
   },
   "author": "",
   "license": "ISC",
