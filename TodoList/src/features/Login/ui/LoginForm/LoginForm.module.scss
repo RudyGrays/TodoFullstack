@@ -8,6 +8,9 @@
   overflow-y: auto;
   gap: 20px;
 }
+::-webkit-scrollbar {
+  display: none;
+}
 .Title {
   color: var(--primary-color);
 }
