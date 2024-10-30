@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { prisma } from "../../../../prisma/prisma.client";
+import { prisma } from "../../../prisma/prisma.client";
 
 //patch("/complete/:taskId", completeTask);
 export const completeTask = async (req: Request, res: Response) => {

@@ -5,7 +5,7 @@ import authRoutes from "./routes/authRoutes";
 import * as dotenv from "dotenv";
 import { authMiddleware } from "./middleware/authMiddleware";
 import cors from "cors";
-import { prisma } from "../prisma/prisma.client";
+import { prisma } from "./prisma/prisma.client";
 
 dotenv.config();
 
