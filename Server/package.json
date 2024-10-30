@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "npx ts-node-dev --respawn --transpile-only --exit-child ./src/server.ts",
     "prisma:push": "prisma db push",
-    "prisma:studio": "prisma studio"
+    "prisma:studio": "prisma studio",
+    "build": "tsc",
+    "start": "node ./dist/server.js"
   },
   "author": "",
   "license": "ISC",
