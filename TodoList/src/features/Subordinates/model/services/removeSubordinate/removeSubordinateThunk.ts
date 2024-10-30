@@ -3,6 +3,8 @@ import { ThunkConfig } from "@/app/providers/StoreProvider/config/StateSchema";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { getSubordinatesThunk } from "../getSubordinates/getSubordinatesThunk";
 import { getUsersThunk } from "@/features/Users";
+
+import { useNotificationThunk } from "@/entities/Notification/model/services/useNotificationThunk/useNotificationThunk";
 interface Props {
   message: string;
 }
@@ -20,6 +22,7 @@ export const removeSubordinateThunk = createAsyncThunk<
           subordinateId: data,
         }
       );
+      dispatch(useNotificationThunk(response.data.message));
       dispatch(getSubordinatesThunk());
       dispatch(getUsersThunk());
       return response.data;

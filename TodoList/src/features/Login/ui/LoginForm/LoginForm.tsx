@@ -20,10 +20,6 @@ type FieldType = {
   remember?: string;
 };
 
-const onFinishFailed: FormProps<FieldType>["onFinishFailed"] = (errorInfo) => {
-  console.log("Failed:", errorInfo);
-};
-
 const LoginForm: React.FC = () => {
   const dispatch = useAppDispatch();
   const isLoading = useSelector(getUserLoading);
@@ -46,7 +42,6 @@ const LoginForm: React.FC = () => {
       name="login"
       layout="vertical"
       onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
       style={{ width: "100%", maxWidth: "400px", minWidth: "200px" }}
       className={mainClasses.LoginForm}
     >
@@ -57,7 +52,7 @@ const LoginForm: React.FC = () => {
         {error && <Typography.Text type="danger">{error}</Typography.Text>}
         <Form.Item
           className={mainClasses.Item}
-          label={<span className={mainClasses.labelText}>Username</span>}
+          label={<span className={mainClasses.labelText}>Логин</span>}
           name="login"
           rules={[{ required: true, message: "Please input your username!" }]}
           style={{ width: "100%" }}
@@ -66,7 +61,7 @@ const LoginForm: React.FC = () => {
         </Form.Item>
 
         <Form.Item
-          label={<span className={mainClasses.labelText}>Password</span>}
+          label={<span className={mainClasses.labelText}>Пароль</span>}
           name="password"
           rules={[{ required: true, message: "Please input your password!" }]}
           style={{ width: "100%" }}

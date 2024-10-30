@@ -11,6 +11,7 @@ export interface UserDTO {
   token?: string;
   user?: User;
   error?: string;
+  message?: string;
 }
 
 export interface UserSchema {

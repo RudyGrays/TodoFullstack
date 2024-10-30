@@ -1,6 +1,7 @@
 import { ThunkConfig } from "@/app/providers/StoreProvider/config/StateSchema";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { TaskDTO, TaskProps } from "../../types/TaskSchema";
+
 import { getTasksThunk } from "../getTasks/getTasksThunk";
 
 export const CreateTaskThunk = createAsyncThunk<

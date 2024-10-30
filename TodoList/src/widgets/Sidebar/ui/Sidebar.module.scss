@@ -1,13 +1,13 @@
 .Sidebar {
   min-width: 50px;
-  height: 300px;
+  height: 500px;
   box-shadow: 0 0 5px var(--primary-color);
   position: relative;
-  border-radius: 5px;
+  border-radius: 2px;
   padding: 10px;
   max-width: 150px;
   background: var(--secondary-color);
-
+  transition: 0.3s;
   & ul {
     display: flex;
     list-style-type: none;

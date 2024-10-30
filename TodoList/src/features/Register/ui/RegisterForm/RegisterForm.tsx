@@ -36,10 +36,9 @@ const RegisterForm: React.FC = () => {
 
   useEffect(() => {
     dispatch(UserActions.resetError());
-  }, []);
+  }, [dispatch]);
 
   const onFinish: FormProps<FieldType>["onFinish"] = (values) => {
-    console.log("Success:", values);
     dispatch(RegisterThunk(values as RegisterThunkProps));
   };
 

@@ -23,6 +23,7 @@ export const updateTaskThunk = createAsyncThunk<
         data: props.data,
       }
     );
+
     dispatch(getTasksThunk({}));
     return response.data;
   } catch (error) {

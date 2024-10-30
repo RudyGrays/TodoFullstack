@@ -5,7 +5,9 @@
   height: max-content;
   align-items: center;
   max-width: 600px;
-  gap: 20px;
+
+  overflow-y: auto;
+  gap: 10px;
 }
 .Title {
   color: var(--primary-color);

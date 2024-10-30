@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { TaskReducer } from "@/entities/Task";
 import { SubordinatesReducer } from "@/features/Subordinates";
 import { UsersReducer } from "@/features/Users";
+import { notificationReducer } from "@/entities/Notification";
 
 export const createReduxStore = (initialState?: StateSchema) => {
   const rootReducers: ReducersMapObject<StateSchema> = {
@@ -13,6 +14,7 @@ export const createReduxStore = (initialState?: StateSchema) => {
     task: TaskReducer,
     subordinates: SubordinatesReducer,
     users: UsersReducer,
+    notification: notificationReducer,
   };
 
   const extraArg: ThunkExtraArg = {

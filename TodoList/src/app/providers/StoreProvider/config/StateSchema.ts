@@ -1,3 +1,4 @@
+import { NotificationSchema } from "@/entities/Notification";
 import { TaskSchema } from "@/entities/Task";
 import { UserSchema } from "@/entities/User";
 
@@ -10,6 +11,7 @@ export interface StateSchema {
   task: TaskSchema;
   subordinates: SubordinateSchema;
   users: UsersSchema;
+  notification: NotificationSchema;
 }
 
 export interface ThunkExtraArg {

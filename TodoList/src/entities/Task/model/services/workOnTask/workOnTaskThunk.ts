@@ -3,6 +3,8 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { Task } from "../../types/TaskSchema";
 import { getTasksThunk } from "../getTasks/getTasksThunk";
 
+import { useNotificationThunk } from "@/entities/Notification/model/services/useNotificationThunk/useNotificationThunk";
+
 interface Response {
   message: string;
   task: Task;
@@ -17,6 +19,7 @@ export const workOnTaskThunk = createAsyncThunk<
     const response = await extra.api.patch<Response>(
       `/tasks/workOnTask/${url}`
     );
+    dispatch(useNotificationThunk(response.data.message));
     dispatch(getTasksThunk({}));
     return response.data;
   } catch (error) {

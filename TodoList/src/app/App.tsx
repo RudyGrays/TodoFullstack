@@ -14,6 +14,7 @@ import { useSelector } from "react-redux";
 import { getUserAuth } from "@/entities/User";
 import { useNavigate } from "react-router-dom";
 import { RoutePaths } from "./providers/RouterProvider/config/RouterConfig";
+import Notification from "@/entities/Notification/ui/Notification/Notification";
 
 const ContentWrapper = styled.div`
   display: flex;
@@ -33,6 +34,7 @@ function App() {
   const dispatch = useAppDispatch();
   const isAuth = useSelector(getUserAuth);
   const navigate = useNavigate();
+
   useEffect(() => {
     if (isAuth) navigate(RoutePaths.tasks);
   }, [isAuth]);
@@ -47,6 +49,7 @@ function App() {
 
   return (
     <div className={classNames(`app`, [currentTheme])}>
+      <Notification />
       <Header />
       <ContentWrapper>
         <SidebarWrapper>
