@@ -1,15 +1,17 @@
 {
+  "name": "express-static-website",
   "version": 2,
+
   "builds": [
     {
-      "src": "dist/server.js",
+      "src": "./dist/server.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
-      "src": "/(.*)",
-      "dest": "dist/server.js"
+      "src": "/((?!.*\\.\\w+$).*)",
+      "dest": "./dist/server.js"
     }
   ]
 }
