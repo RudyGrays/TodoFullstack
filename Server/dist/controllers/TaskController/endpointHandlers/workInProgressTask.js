@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.workInProgressTask = void 0;
-const prisma_client_1 = require("../../../../prisma/prisma.client");
+const prisma_client_1 = require("../../../prisma/prisma.client");
 //patch("/workOnTask/:taskId", workInProgressTask);
 const workInProgressTask = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { taskId } = req.params;

@@ -13,7 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.refreshToken = exports.login = exports.register = void 0;
-const prisma_client_1 = require("../../prisma/prisma.client");
+const prisma_client_1 = require("../prisma/prisma.client");
 const auth_1 = require("../utils/auth");
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {

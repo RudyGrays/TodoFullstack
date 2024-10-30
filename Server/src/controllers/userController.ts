@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { prisma } from "../../prisma/prisma.client";
+import { prisma } from "../prisma/prisma.client";
 import { User } from "@prisma/client";
 
 //add-subordinate
@@ -106,12 +106,10 @@ export const getUsers = async (req: Request, res: Response) => {
       imLeader: subordinateIds.includes(user.id),
     }));
 
-    return res
-      .status(200)
-      .json({
-        users: usersWithImLeader,
-        message: "Список пользователей получен!",
-      });
+    return res.status(200).json({
+      users: usersWithImLeader,
+      message: "Список пользователей получен!",
+    });
   } catch (error) {
     return res
       .status(500)

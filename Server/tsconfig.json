@@ -11,6 +11,6 @@
     "rootDir": "./src",
     "typeRoots": ["./node_modules/@types", "./src/types"]
   },
-  "include": ["src/**/*.ts", "prisma/**/*.ts"],
+  "include": ["src/**/*.ts", "src/prisma/**/*.ts"],
   "exclude": ["node_modules"]
 }

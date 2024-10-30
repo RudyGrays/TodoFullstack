@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getSubordinates = exports.getUsers = exports.removeSubordinate = exports.addSubordinate = void 0;
-const prisma_client_1 = require("../../prisma/prisma.client");
+const prisma_client_1 = require("../prisma/prisma.client");
 //add-subordinate
 const addSubordinate = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { userId } = req;
@@ -103,9 +103,7 @@ const getUsers = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             login: user.login,
             imLeader: subordinateIds.includes(user.id),
         }));
-        return res
-            .status(200)
-            .json({
+        return res.status(200).json({
             users: usersWithImLeader,
             message: "Список пользователей получен!",
         });

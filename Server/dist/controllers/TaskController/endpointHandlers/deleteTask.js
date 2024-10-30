@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteTask = void 0;
-const prisma_client_1 = require("../../../../prisma/prisma.client");
+const prisma_client_1 = require("../../../prisma/prisma.client");
 //delete("/:taskId", deleteTask)
 const deleteTask = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { isCreator } = req;

@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.cancelTask = void 0;
-const prisma_client_1 = require("../../../../prisma/prisma.client");
+const prisma_client_1 = require("../../../prisma/prisma.client");
 //patch("/cancel/:taskId", cancelTask);
 const cancelTask = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { taskId } = req.params;

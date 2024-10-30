@@ -40,6 +40,6 @@ server.use(express_1.default.json());
 server.use("/auth", authRoutes_1.default);
 server.use("/users", authMiddleware_1.authMiddleware, managerRoutes_1.default);
 server.use("/tasks", authMiddleware_1.authMiddleware, taskRoutes_1.default);
-server.listen("4200", () => {
+server.listen(process.env.PORT || 4200, () => {
     console.log("Server running on port 4200");
 });
