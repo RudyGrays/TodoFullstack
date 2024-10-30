@@ -2,8 +2,7 @@ import { ThunkConfig } from "@/app/providers/StoreProvider/config/StateSchema";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { Task } from "../../types/TaskSchema";
 
-import { notificationActions } from "@/entities/Notification";
-import { useNotificationThunk } from "@/entities/Notification/model/services/useNotificationThunk/useNotificationThunk";
+import { getTasksThunk } from "../getTasks/getTasksThunk";
 
 interface Response {
   message: string;
@@ -17,8 +16,7 @@ export const completeTaskThunk = createAsyncThunk<
 >("completeTaskThunk", async (url, { extra, rejectWithValue, dispatch }) => {
   try {
     const response = await extra.api.patch<Response>(`/tasks/complete/${url}`);
-    dispatch(notificationActions.setNotification(response.data.message));
-    dispatch(useNotificationThunk(response.data.message));
+    dispatch(getTasksThunk({}));
     return response.data;
   } catch (error) {
     return rejectWithValue(error.response.data.error);
