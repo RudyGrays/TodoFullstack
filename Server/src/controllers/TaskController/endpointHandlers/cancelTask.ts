@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { prisma } from "../../../prisma/prisma.client";
+import { prisma } from "../../../../prisma/prisma.client";
 
 //patch("/cancel/:taskId", cancelTask);
 export const cancelTask = async (req: Request, res: Response) => {

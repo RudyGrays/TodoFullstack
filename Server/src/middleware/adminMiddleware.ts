@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { prisma } from "../prisma/prisma.client";
+import { prisma } from "../../prisma/prisma.client";
 
 export const adminMiddleware = async (
   req: Request,

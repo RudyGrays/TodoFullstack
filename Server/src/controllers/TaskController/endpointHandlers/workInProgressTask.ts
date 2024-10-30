@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { prisma } from "../../../prisma/prisma.client";
+import { prisma } from "../../../../prisma/prisma.client";
 
 //patch("/workOnTask/:taskId", workInProgressTask);
 export const workInProgressTask = async (req: Request, res: Response) => {

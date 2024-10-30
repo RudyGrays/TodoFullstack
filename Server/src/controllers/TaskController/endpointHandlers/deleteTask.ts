@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { prisma } from "../../../prisma/prisma.client";
+import { prisma } from "../../../../prisma/prisma.client";
 
 //delete("/:taskId", deleteTask)
 export const deleteTask = async (req: Request, res: Response) => {

@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { prisma } from "../prisma/prisma.client";
+import { prisma } from "../../prisma/prisma.client";
 import { hashPassword, comparePassword, createToken } from "../utils/auth";
 import jwt, { JwtPayload } from "jsonwebtoken";
 
