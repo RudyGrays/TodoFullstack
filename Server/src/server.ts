@@ -16,6 +16,6 @@ server.use("/auth", authRoutes);
 server.use("/users", authMiddleware, managerRoutes);
 server.use("/tasks", authMiddleware, taskRoutes);
 
-server.listen("4200", () => {
+server.listen(process.env.PORT || 4200, () => {
   console.log("Server running on port 4200");
 });
