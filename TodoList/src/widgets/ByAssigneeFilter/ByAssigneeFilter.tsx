@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import { FC, useState } from "react";
 import { Dropdown, Button } from "antd";
 import { User } from "@/entities/User";
 
