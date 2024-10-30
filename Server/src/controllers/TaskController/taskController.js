@@ -1,0 +1,15 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.workInProgressTask = exports.updateTask = exports.getTasks = exports.deleteTask = exports.createTask = exports.completeTask = void 0;
+var completeTask_1 = require("./endpointHandlers/completeTask");
+Object.defineProperty(exports, "completeTask", { enumerable: true, get: function () { return completeTask_1.completeTask; } });
+var createTask_1 = require("./endpointHandlers/createTask");
+Object.defineProperty(exports, "createTask", { enumerable: true, get: function () { return createTask_1.createTask; } });
+var deleteTask_1 = require("./endpointHandlers/deleteTask");
+Object.defineProperty(exports, "deleteTask", { enumerable: true, get: function () { return deleteTask_1.deleteTask; } });
+var getTasks_1 = require("./endpointHandlers/getTasks");
+Object.defineProperty(exports, "getTasks", { enumerable: true, get: function () { return getTasks_1.getTasks; } });
+var updateTask_1 = require("./endpointHandlers/updateTask");
+Object.defineProperty(exports, "updateTask", { enumerable: true, get: function () { return updateTask_1.updateTask; } });
+var workInProgressTask_1 = require("./endpointHandlers/workInProgressTask");
+Object.defineProperty(exports, "workInProgressTask", { enumerable: true, get: function () { return workInProgressTask_1.workInProgressTask; } });
