@@ -7,5 +7,9 @@
       "config": { "includeFiles": ["prisma/schema.prisma", ".env"] }
     }
   ],
-  "routes": [{ "src": "/(.*)", "dest": "src/server.ts" }]
+  "routes": [{ "src": "/(.*)", "dest": "src/server.ts" }],
+  "env": {
+    "POSTGRES_PRISMA_URL": "postgres://default:pgoFCKl5Vw0a@ep-patient-frog-a28ls2cf-pooler.eu-central-1.aws.neon.tech:5432/verceldb?sslmode=require&pgbouncer=true&connect_timeout=15",
+    "JWT_SECRET_KEY": "SECRET_KEY"
+  }
 }
