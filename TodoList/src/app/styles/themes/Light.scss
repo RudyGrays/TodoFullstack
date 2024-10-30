@@ -1,0 +1,16 @@
+.app.light {
+  --background-color: linear-gradient(
+    45deg,
+    rgba(84, 77, 205, 1) 0%,
+    rgba(128, 31, 156, 1) 23%,
+    rgba(111, 112, 241, 1) 46%,
+    rgba(112, 240, 188, 1) 74%,
+    rgba(217, 108, 241, 1) 100%
+  );
+  --primary-color: rgb(36, 36, 36);
+  --secondary-color: rgba(68, 74, 249, 0.355);
+  --inputs-background-color: transparent;
+  --content-background-color: rgba(222, 220, 220, 0.972);
+
+  --menu-color: rgb(36, 36, 36);
+}

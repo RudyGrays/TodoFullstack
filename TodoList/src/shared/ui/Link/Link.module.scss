@@ -1,0 +1,28 @@
+.Link {
+  color: var(--primary-color);
+  background-color: var(--secondary-color);
+  outline: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  height: max-content;
+  transition: 0.3s;
+  justify-content: space-between;
+  &:hover {
+    opacity: 0.7;
+  }
+  &.active::after {
+    content: "";
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    display: block;
+    transition: 0.5s;
+
+    background-color: var(--primary-color);
+  }
+}

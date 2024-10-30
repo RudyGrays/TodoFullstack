@@ -1,0 +1,25 @@
+@use "./themes/Dark.scss" as *;
+@use "./themes/Light.scss" as *;
+@use "./reset.scss" as *;
+@use "./variables.scss" as *;
+
+body,
+#root {
+  max-height: 100vh;
+  height: 100vh;
+}
+
+.app {
+  height: 100%;
+  transition: background-image 0.3s ease, color 0.3s ease;
+  background-image: var(--background-color);
+  color: var(--primary-color);
+}
+
+.centerLoader {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

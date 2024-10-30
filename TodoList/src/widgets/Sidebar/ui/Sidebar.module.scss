@@ -1,0 +1,32 @@
+.Sidebar {
+  min-width: 50px;
+  height: 300px;
+  box-shadow: 0 0 5px var(--primary-color);
+  position: relative;
+  border-radius: 5px;
+  padding: 10px;
+  max-width: 150px;
+  background: var(--secondary-color);
+
+  & ul {
+    display: flex;
+    list-style-type: none;
+    gap: 5px;
+    flex-direction: column;
+  }
+
+  & .SwitcherWrapper {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  & .title {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--menu-color) !important;
+  }
+}

@@ -1,0 +1,15 @@
+.app.dark {
+  --background-color: linear-gradient(
+    90deg,
+    rgba(116, 109, 237, 1) 0%,
+    rgba(197, 96, 226, 1) 26%,
+    rgba(173, 178, 126, 1) 74%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  --primary-color: rgb(243, 243, 243);
+  --secondary-color: rgba(201, 200, 200, 0.276);
+  --inputs-background-color: transparent;
+  --content-background-color: rgb(52, 52, 52);
+
+  --menu-color: rgb(36, 36, 36);
+}

@@ -1,0 +1,65 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
+}
+
+model User {
+  id            String             @id @default(cuid())
+  firstName     String?
+  lastName      String?
+  patronymic    String?
+  login         String             @unique
+  password      String
+  leaders       UserRelationship[] @relation("UserLeaders")
+  subordinates  UserRelationship[] @relation("UserSubordinates")
+  createdTasks  Task[]             @relation("CreatedTasks")
+  assignedTasks Task[]             @relation("AssignedTasks")
+}
+
+model UserRelationship {
+  id            String @id @default(cuid())
+  leader        User   @relation("UserSubordinates", fields: [leaderId], references: [id])
+  leaderId      String
+  subordinate   User   @relation("UserLeaders", fields: [subordinateId], references: [id])
+  subordinateId String
+}
+
+model Task {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  dueDate     DateTime
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  priority    Priority
+  status      Status
+
+  creator    User   @relation("CreatedTasks", fields: [creatorId], references: [id])
+  creatorId  String
+  assignee   User   @relation("AssignedTasks", fields: [assigneeId], references: [id])
+  assigneeId String
+}
+
+enum Priority {
+  HIGH
+  MEDIUM
+  LOW
+}
+
+enum Status {
+  TO_DO
+  IN_PROGRESS
+  DONE
+  CANCELLED
+}
