@@ -6,7 +6,7 @@
     "dev": "npx ts-node-dev --respawn --transpile-only --exit-child ./src/server.ts",
     "prisma:push": "prisma db push",
     "prisma:studio": "prisma studio",
-    "build": "tsc --output public",
+    "build": "tsc build --output public",
     "start": "node dist/server.js"
   },
   "author": "",
