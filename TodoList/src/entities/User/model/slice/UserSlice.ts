@@ -6,9 +6,13 @@ import { LoginThunk } from "@/features/Login";
 import { RefreshTokenThunk } from "@/features/RefreshToken";
 import { updateInstance } from "@/shared/api/axiosApiInstance";
 
+export const resetHasToken = () => {
+  return Boolean(localStorage.getItem(LS_TOKEN));
+};
+
 const initialState: UserSchema = {
   error: undefined,
-  isAuth: false,
+  isAuth: resetHasToken(),
   isLoading: false,
   userData: undefined,
   _init: false,
@@ -18,13 +22,19 @@ export const UserSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    logout: () => {
+    logout: (state) => {
       localStorage.removeItem(LS_TOKEN);
-
-      return initialState;
+      state.isLoading = false;
+      state.userData = undefined;
+      state._init = false;
+      state.error = undefined;
+      state.isAuth = resetHasToken();
     },
     resetError: (state) => {
       state.error = undefined;
+    },
+    setIsAuth: (state) => {
+      state.isAuth = true;
     },
   },
   extraReducers: (builder) => {
@@ -84,6 +94,8 @@ export const UserSlice = createSlice({
       })
       .addCase(RefreshTokenThunk.rejected, (state) => {
         state.isLoading = false;
+        state.isAuth = false;
+
         localStorage.removeItem(LS_TOKEN);
       });
   },

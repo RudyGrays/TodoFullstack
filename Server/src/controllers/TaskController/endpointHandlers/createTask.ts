@@ -30,7 +30,7 @@ export const createTask = async (req: Request, res: Response) => {
       },
     });
 
-    return res.status(201).json({ task, message: "Успешно создано!" });
+    return res.status(201).json({ task, message: "Задача добавлена!" });
   } catch (error) {
     return res.status(500).json({ error: "Ошибка при создании задачи" });
   }

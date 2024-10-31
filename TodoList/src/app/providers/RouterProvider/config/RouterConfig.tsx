@@ -1,9 +1,9 @@
-import { HomePage } from "@/pages/HomePage/HomePage";
 import { LoginPage } from "@/pages/LoginPage";
 import { NotFoundPage } from "@/pages/NotFoundPage";
 import { RegisterPage } from "@/pages/RegisterPage";
 import { TasksPage } from "@/pages/TasksPage";
 import { UsersPage } from "@/pages/UsersPage";
+import { LS_TOKEN } from "@/shared/constants/constants";
 import { ReactNode } from "react";
 import { PathRouteProps } from "react-router-dom";
 
@@ -31,9 +31,10 @@ interface CustomRouteProps extends PathRouteProps {
   withAuth?: boolean;
   forNavbar?: boolean;
   navbarName?: string;
-  forUnauthorized?: boolean;
 }
 export type TRouterConfig = Record<TRoutes, CustomRouteProps>;
+
+const isAuth = localStorage.getItem(LS_TOKEN);
 
 export const RouterConfig: TRouterConfig = {
   [TRoutes.LOGIN]: {
@@ -43,7 +44,7 @@ export const RouterConfig: TRouterConfig = {
   },
   [TRoutes.HOME]: {
     path: RoutePaths.home,
-    element: <HomePage />,
+    element: isAuth ? <TasksPage /> : <LoginPage />,
     forNavbar: false,
   },
   [TRoutes.USERS]: {
@@ -57,7 +58,6 @@ export const RouterConfig: TRouterConfig = {
     path: RoutePaths.register,
     element: <RegisterPage />,
     forNavbar: false,
-    forUnauthorized: true,
   },
   [TRoutes.TASKS]: {
     path: RoutePaths.tasks,

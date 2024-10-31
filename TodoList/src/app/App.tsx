@@ -1,8 +1,8 @@
 import classNames from "classnames";
 import { useTheme } from "../shared/hooks/useTheme";
-import { useEffect, useLayoutEffect } from "react";
+import { useLayoutEffect } from "react";
 import { AppThemes } from "./providers/ThemeProvider/ui/ThemeProvider";
-import { THEME_LS_KEY } from "../shared/constants/constants";
+import { LS_TOKEN, THEME_LS_KEY } from "../shared/constants/constants";
 
 import { Header } from "../widgets/Header";
 import { Content } from "@/widgets/Content";
@@ -10,11 +10,9 @@ import styled from "styled-components";
 import { Sidebar } from "@/widgets/Sidebar";
 import { useAppDispatch } from "./providers/StoreProvider/config/store";
 import { RefreshTokenThunk } from "@/features/RefreshToken";
-import { useSelector } from "react-redux";
-import { getUserAuth } from "@/entities/User";
-import { useNavigate } from "react-router-dom";
-import { RoutePaths } from "./providers/RouterProvider/config/RouterConfig";
+
 import Notification from "@/entities/Notification/ui/Notification/Notification";
+import { UserActions } from "@/entities/User";
 
 const ContentWrapper = styled.div`
   display: flex;
@@ -32,19 +30,16 @@ const SidebarWrapper = styled.div`
 function App() {
   const { currentTheme, setDefiniteTheme } = useTheme();
   const dispatch = useAppDispatch();
-  const isAuth = useSelector(getUserAuth);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (isAuth) navigate(RoutePaths.tasks);
-  }, [isAuth]);
 
   useLayoutEffect(() => {
     const theme = JSON.parse(localStorage.getItem(THEME_LS_KEY)) as AppThemes;
     if (theme) {
       setDefiniteTheme(theme);
     }
-    dispatch(RefreshTokenThunk());
+    if (localStorage.getItem(LS_TOKEN)) {
+      dispatch(UserActions.setIsAuth());
+      dispatch(RefreshTokenThunk());
+    }
   }, [setDefiniteTheme, dispatch]);
 
   return (

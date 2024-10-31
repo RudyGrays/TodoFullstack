@@ -27,7 +27,9 @@ export const register = async (req: Request, res: Response) => {
 
     const token = createToken(user);
 
-    return res.status(201).json({ token, user });
+    return res
+      .status(201)
+      .json({ token, user, message: "Успешно, регистрация завершена!" });
   } catch (error) {
     return res.status(500).json({ error: "Ошибка при регистрации" });
   }
@@ -48,7 +50,7 @@ export const login = async (req: Request, res: Response) => {
     }
 
     const token = createToken(user);
-    return res.status(200).json({ token, user });
+    return res.status(200).json({ token, user, message: "Вход выполнен!" });
   } catch (error) {
     return res.status(500).json({ error: "Ошибка при аутентификации" });
   }
@@ -82,6 +84,7 @@ export const refreshToken = async (
     return res.status(200).json({
       token: newToken,
       user,
+      message: "Успешно!",
     });
   } catch (error) {
     return res.status(403).json({ error: "Неверный токен" });
