@@ -12,7 +12,6 @@ import { useAppDispatch } from "./providers/StoreProvider/config/store";
 import { RefreshTokenThunk } from "@/features/RefreshToken";
 
 import Notification from "@/entities/Notification/ui/Notification/Notification";
-import { UserActions } from "@/entities/User";
 
 const ContentWrapper = styled.div`
   display: flex;
@@ -37,7 +36,6 @@ function App() {
       setDefiniteTheme(theme);
     }
     if (localStorage.getItem(LS_TOKEN)) {
-      dispatch(UserActions.setIsAuth());
       dispatch(RefreshTokenThunk());
     }
   }, [setDefiniteTheme, dispatch]);

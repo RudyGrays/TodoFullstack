@@ -1,8 +1,4 @@
-import {
-  RouterConfig,
-  TRouterConfig,
-  TRoutes,
-} from "@/app/providers/RouterProvider/config/RouterConfig";
+import { RouterConfig } from "@/app/providers/RouterProvider/config/RouterConfig";
 
 import { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
@@ -12,18 +8,8 @@ import { WithAuth } from "./ComponentWithAuth/WithAuth";
 import { useSelector } from "react-redux";
 import { getUserAuth } from "@/entities/User";
 
-import { TasksPage } from "@/pages/TasksPage";
-import { LoginPage } from "@/pages/LoginPage";
-
 const AppRouter = () => {
   const isAuth = useSelector(getUserAuth);
-
-  const resultConfig: TRouterConfig = {
-    ...RouterConfig,
-    [TRoutes.HOME]: {
-      element: isAuth ? <TasksPage /> : <LoginPage />,
-    },
-  };
 
   return (
     <Suspense
@@ -34,7 +20,7 @@ const AppRouter = () => {
       }
     >
       <Routes>
-        {Object.values(resultConfig).map(({ element, path, withAuth }) => {
+        {Object.values(RouterConfig).map(({ element, path, withAuth }) => {
           if (withAuth)
             return (
               <Route
