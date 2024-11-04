@@ -16,6 +16,6 @@ export const comparePassword = async (
 
 export const createToken = (user: User): string => {
   return jwt.sign({ userId: user.id }, process.env.JWT_SECRET_KEY as string, {
-    expiresIn: "5h",
+    expiresIn: "1h",
   });
 };

@@ -2,7 +2,7 @@ import classNames from "classnames";
 import { useTheme } from "../shared/hooks/useTheme";
 import { useLayoutEffect } from "react";
 import { AppThemes } from "./providers/ThemeProvider/ui/ThemeProvider";
-import { LS_TOKEN, THEME_LS_KEY } from "../shared/constants/constants";
+import { LS_TOKEN, LS_THEME_KEY } from "../shared/constants/constants";
 
 import { Header } from "../widgets/Header";
 import { Content } from "@/widgets/Content";
@@ -31,7 +31,7 @@ function App() {
   const dispatch = useAppDispatch();
 
   useLayoutEffect(() => {
-    const theme = JSON.parse(localStorage.getItem(THEME_LS_KEY)) as AppThemes;
+    const theme = JSON.parse(localStorage.getItem(LS_THEME_KEY)) as AppThemes;
     if (theme) {
       setDefiniteTheme(theme);
     }

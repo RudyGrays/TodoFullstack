@@ -13,18 +13,30 @@ import {
   getSubordinatesThunk,
 } from "@/features/Subordinates";
 import { useSelector } from "react-redux";
+import {
+  LS_GROUP_BY_ASSIGNEE_TASKS_KEY,
+  LS_GROUP_BY_DATE_TASKS_KEY,
+} from "@/shared/constants/constants";
 
 interface TasksPageProps {}
-
+type TDate = "today" | "week" | "future" | "all";
 const TasksPage: FC<TasksPageProps> = () => {
   const [isCreateTaskModal, setIsCreateTaskModal] = useState<boolean>(false);
 
-  const [groupBy, setGroupBy] = useState<"today" | "week" | "future">();
+  const [groupBy, setGroupBy] = useState<TDate>();
+
   const [byAssignee, setByAssignee] = useState<string>();
 
   const subordinates = useSelector(getSubordinateSelectors.selectAll);
 
   const dispatch = useAppDispatch();
+  useEffect(() => {
+    const item = localStorage.getItem(LS_GROUP_BY_DATE_TASKS_KEY) as TDate;
+    if (!item) return;
+
+    setGroupBy(item);
+    console.log(groupBy);
+  }, [subordinates]);
 
   useEffect(() => {
     dispatch(getSubordinatesThunk());
@@ -32,12 +44,17 @@ const TasksPage: FC<TasksPageProps> = () => {
 
   const setGroupByHandler = useCallback(
     (value) => {
+      localStorage.setItem(LS_GROUP_BY_DATE_TASKS_KEY, value);
       setGroupBy(value);
     },
     [setGroupBy]
   );
   const setByAssigneeHandler = useCallback(
     (value: string) => {
+      localStorage.setItem(
+        LS_GROUP_BY_ASSIGNEE_TASKS_KEY,
+        JSON.stringify(value)
+      );
       setByAssignee(value);
     },
     [setByAssignee]
@@ -52,12 +69,14 @@ const TasksPage: FC<TasksPageProps> = () => {
             onClick={() => {
               setGroupBy(undefined);
               setByAssignee(undefined);
+              localStorage.removeItem(LS_GROUP_BY_DATE_TASKS_KEY);
+              localStorage.removeItem(LS_GROUP_BY_ASSIGNEE_TASKS_KEY);
             }}
           >
             Очистить фильтры
           </Button>
         )}
-        <GroupByFilter onChange={setGroupByHandler} />
+        <GroupByFilter onChange={setGroupByHandler} value={groupBy} />
         <ByAssigneeFilter
           users={subordinates}
           onSelect={setByAssigneeHandler}

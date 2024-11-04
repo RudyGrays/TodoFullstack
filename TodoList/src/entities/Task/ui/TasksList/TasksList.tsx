@@ -17,7 +17,7 @@ import { UpdateTaskModal } from "@/widgets/UpdateTaskModal/ui/UpdateTaskModal";
 
 interface TasksListProps {
   someClasses?: string;
-  groupBy?: "today" | "week" | "future";
+  groupBy?: "today" | "week" | "future" | "all";
   byAssignee?: string;
 }
 
@@ -40,7 +40,7 @@ const TasksList: FC<TasksListProps> = ({ byAssignee, groupBy }) => {
 
   useEffect(() => {
     const params = {} as Partial<{
-      groupBy: "today" | "week" | "future";
+      groupBy: "today" | "week" | "future" | "all";
       byAssignee: string;
     }>;
     if (byAssignee) {

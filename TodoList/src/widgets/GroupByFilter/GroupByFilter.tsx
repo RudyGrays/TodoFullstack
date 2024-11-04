@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Dropdown, Button } from "antd";
 
-const GroupByFilter = ({ onChange }) => {
-  const [selected, setSelected] = useState("-");
+const GroupByFilter = ({ onChange, value }) => {
+  const [selected, setSelected] = useState(value || "-");
 
   const handleMenuClick = ({ key }) => {
     setSelected(key);

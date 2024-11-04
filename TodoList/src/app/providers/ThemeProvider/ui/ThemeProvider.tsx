@@ -6,7 +6,7 @@ import {
   useMemo,
   useState,
 } from "react";
-import { THEME_LS_KEY } from "../../../../shared/constants/constants";
+import { LS_THEME_KEY } from "../../../../shared/constants/constants";
 
 export const enum AppThemes {
   DARK = "dark",
@@ -38,7 +38,7 @@ export const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
     setTheme((prev) => {
       const nextTheme =
         prev === AppThemes.DARK ? AppThemes.LIGHT : AppThemes.DARK;
-      localStorage.setItem(THEME_LS_KEY, JSON.stringify(nextTheme));
+      localStorage.setItem(LS_THEME_KEY, JSON.stringify(nextTheme));
       return nextTheme;
     });
   }, [setTheme]);

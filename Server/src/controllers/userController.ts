@@ -13,13 +13,24 @@ export const addSubordinate = async (req: Request, res: Response) => {
   }
 
   try {
-    const subordinateExists = await prisma.user.findUnique({
+    const userExists = await prisma.user.findUnique({
       where: { id: subordinateId },
     });
 
-    if (!subordinateExists) {
+    if (!userExists) {
       return res.status(404).json({ error: "Подчиненный не найден" });
     }
+
+    const relationExists = await prisma.userRelationship.findFirst({
+      where: {
+        leaderId: subordinateId,
+        subordinateId: userId,
+      },
+    });
+    if (relationExists)
+      return res
+        .status(404)
+        .json({ error: "Нельзя назначить подчиненным руководителя!" });
 
     const relationship = await prisma.userRelationship.create({
       data: {

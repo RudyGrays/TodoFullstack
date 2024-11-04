@@ -25,7 +25,7 @@ export const register = async (req: Request, res: Response) => {
       },
     });
 
-    const token = createToken(user);
+    const token = await createToken(user);
 
     return res
       .status(201)
@@ -50,6 +50,7 @@ export const login = async (req: Request, res: Response) => {
     }
 
     const token = createToken(user);
+
     return res.status(200).json({ token, user, message: "Вход выполнен!" });
   } catch (error) {
     return res.status(500).json({ error: "Ошибка при аутентификации" });

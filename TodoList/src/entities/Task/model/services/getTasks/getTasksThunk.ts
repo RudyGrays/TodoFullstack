@@ -8,7 +8,7 @@ interface Response {
 }
 interface Props {
   byAssignee?: string;
-  groupBy?: "today" | "week" | "future";
+  groupBy?: "today" | "week" | "future" | "all";
 }
 export const getTasksThunk = createAsyncThunk<
   Response,
